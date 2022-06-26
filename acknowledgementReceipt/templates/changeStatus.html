@@ -1,0 +1,33 @@
+{% extends 'activities/main.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+  <h1 class="text-center">Interview Result</h1>
+  <div class="container">
+    <form method="POST" action = "">
+      {% csrf_token %}
+      {{information | crispy}}
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <a class= "btn btn-danger" href="{% url 'interview' %}">Cancel</a>
+    </form>
+  </div>
+  <div class="container">
+  <table class="table table-bordered table-striped">
+    <tr>
+      <th>Application Number</th>
+      <th>Lastname</th>
+      <th>Firstname</th>
+      <th>Course</th>
+      <th>Major</th>
+    </tr>
+    <tr>
+        <td>{{info.applicantNumber}}</td>
+        <td>{{info.lastName}}</td>
+        <td>{{info.firstName}}</td>
+        <td>{{info.course}}</td>
+        <td>{{info.major}}</td>
+    </tr>
+</table>
+  </div>
+{% endblock %}
+

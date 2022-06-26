@@ -1,0 +1,96 @@
+{% extends 'main.html' %}
+
+{% block content %}
+  
+   
+  <div class="container">
+    <form action="" method="POST">
+      <!--<p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="{% url 'index' %}" class="fw-bold text-body"><u>Login here</u></a></p>-->
+      <section class="vh-10">
+        <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+          <div class="container h-10">
+            <div class="row d-flex justify-content-center align-items-center h-10">
+              <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                <div class="card" style="border-radius: 15px;">
+                  <div class="card-body">
+                    <h2 class="text-uppercase text-center mb-1">Registration</h2>
+
+                    <form>
+                      {% csrf_token %}
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1">Username</span>
+                        </div>
+                        {{form.username}}
+                      </div>
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1">Password</span>
+                        </div>
+                        {{form.password1}}
+                      </div>
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1">Confirm Password</span>
+                        </div>
+                        {{form.password2}}
+                      </div>
+                      
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1">Email</span>
+                        </div>
+                        {{form.email}}
+                      </div>
+
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1">Id Number TUPC-</span>
+                        </div>
+                        {{form.idNumber}}
+                      </div>
+
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1">Major</span>
+                        </div>
+                        {{form.major}}
+                      </div>
+
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1">Last Name</span>
+                        </div>
+                        {{form.last_name}}
+                      </div>
+
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1">First Name</span>
+                        </div>
+                        {{form.first_name}}
+                      </div>
+
+                      <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+                    <div><a class= "btn btn-warning text-body" href="{% url 'index' %}">
+                        Cancel</a></div>
+
+
+                    <input type="hidden" name="student" value="student">
+                    {{form.errors}}
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+        
+    </form>
+
+  </div>
+
+ 
+{% endblock %}
+

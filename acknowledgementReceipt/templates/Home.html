@@ -1,0 +1,98 @@
+{% extends 'main.html' %}
+
+{% block content %}
+  
+   
+  <div class="container">
+    <form action="" method="POST">
+       <section class="vh-10">
+        <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+          <div class="container h-10">
+            <div class="row d-flex justify-content-center align-items-center h-10">
+              <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                <div class="card" style="border-radius: 15px;">
+                  <div class="card-body">
+                </div>
+                    {% if applicationStatus %}
+                      <h2 class="text-uppercase text-center mb-1">Welcome {{user.first_name}}</h2>
+                      <a class= "btn btn-primary text-white mb-1" href="{% url 'logout' %}">Logout</a>
+                      <a class= "btn btn-warning text-white mb-5" href="{% url 'editProfile' user.pk%}">Edit Profile</a>
+                      {% for title in application %}
+                      <h6 class="text-uppercase text-center mb-1">Thesis Title</h6>
+                      <h4 class="text-uppercase text-center mb-3">{{title.thesisTitle}}</h4>
+                      <h6 class="text-uppercase text-center mb-1">Proponents</h6>
+                      <h4 class="text-uppercase text-center mb-1">{{title.proponents}}</h4>
+                      {% endfor %}
+                      <table class="table table-striped table-bordered">
+                        <thead>
+                          <tr>
+                            <th scope="col">DIT</th>
+                            <th scope="col">OAA</th>
+                            <th scope="col">OCL</th>
+                            <th scope="col">ORE</th>
+                            <th scope="col">Adviser</th>
+                            <th scope="col">Faculty-In-Charge</th>
+                          </tr>
+                           
+                      {% for value in applicationStatus%}
+                      <tbody>
+                        <tr>
+                          {% if value.dit %}
+                          <td>Submitted</td>
+                          {%  else %}
+                          <td>None</td>
+                          {% endif %}
+                          {% if value.oaa %}
+                          <td>Submitted</td>
+                          {%  else %}
+                          <td>None</td>
+                          {% endif %}
+                          {% if value.ocl %}
+                          <td>Submitted</td>
+                          {%  else %}
+                          <td>None</td>
+                          {% endif %}
+                          {% if value.ore %}
+                          <td>Submitted</td>
+                          {%  else %}
+                          <td>None</td>
+                          {% endif %}
+                          {% if value.adviser %}
+                          <td>Submitted</td>
+                          {%  else %}
+                          <td>None</td>
+                          {% endif %}
+                          {% if value.fic %}
+                          <td>Submitted</td>
+                          {%  else %}
+                          <td>None</td>
+                          {% endif %}
+                        </tr>
+                      </tbody>
+                      {% endfor %}
+                    </thead>
+                  </table>  
+                    {% else %}
+                    <h2 class="text-uppercase text-center mb-2">Welcome {{user.first_name}}</h2>
+                    <a class= "btn btn-primary text-white mb-1" href="{% url 'logout' %}">Logout</a>
+                      <a class= "btn btn-success text-white mb-5" href="{% url 'editProfile' user.pk %}">Edit Profile</a>
+                    <h6 class="text-uppercase text-center mb-1">No Application for Acknowledgement Receipt</h2>
+                    <a class= "btn btn-warning text-body" href="{% url 'application' %}">Apply here</a>
+                   
+                    {% endif %}  
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+        
+    </form>
+
+  </div>
+
+ 
+{% endblock %}
+

@@ -1,0 +1,67 @@
+{% extends 'main.html' %}
+
+{% block content %}
+  
+   
+  <div class="container">
+    <form action="" method="POST">
+       <section class="vh-10">
+        <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+          <div class="container h-10">
+            <div class="row d-flex justify-content-center align-items-center h-10">
+              <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                <div class="card" style="border-radius: 15px;">
+                  <div class="card-body">
+                    <h2 class="text-uppercase text-center mb-1">Thesis Acknowldegment Application</h2>
+      
+                    <form method="POST">
+                      {% csrf_token %}
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1">Proponents</span>
+                        </div>
+                        {{form.proponents}}  
+                      </div>
+                         
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1">Thesis Title</span>
+                        </div>
+                        {{form.thesisTitle}}  
+                      </div>                          
+                      <input type="hidden" name="number" value="{{user.id}}" >
+                      <input class= "btn btn-success text-body" type="submit"> 
+                       <!--
+                      {{form.studentId}}
+                      {{user.id}} 
+                      <input type="hidden" name="idNumber" value="{{user.id}}">                    
+                      <div class="form-outline mb-1">
+                        <label class="form-label" for="title">Thesis Title</label>
+                        <input type="text" name="title" id="title" class="form-control form-control-lg" />                       
+                      </div>      
+                      <div class="form-outline mb-1">
+                        <label class="form-label" for="proponents">Proponents</label>
+                        <input type="text" name="proponents" id="proponents" class="form-control form-control-lg" 
+                          placeholder="E. Aguinaldo, J. Rizal, A. Bonifacio"/>                        
+                      </div> 
+                      <div class="container mt-3">
+                        <input type="submit" class="btn btn-primary btn-block btn-lg gradient-custom-4 text-body">
+                      </div> -->
+                    
+                    </form>
+                    <a class= "btn btn-warning text-body" href="{% url 'home' %}">Cancel</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+        
+    </form>
+
+  </div>
+
+ 
+{% endblock %}
+

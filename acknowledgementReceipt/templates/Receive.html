@@ -1,0 +1,60 @@
+{% extends 'main.html' %}
+{% load static%}
+
+{% block content %}
+
+  <h1 class="text-center text-warning">Acknowledgement Receipt</h1>
+  <h4 class="text-center text-warning">{{user.first_name}}</h4>
+  <div class = "container">
+    <h1>Number of Thesis: {{form}}</h1>     
+  </div>
+  <div class="container">
+    <form method="POST" action = "">
+      {% csrf_token %}
+    <input class="form-control mb-1" name = "search" type="text"
+      placeholder="Enter id No.">
+    <button type="submit" class="btn btn-primary mb-3">Search</button> 
+  </form>
+    <h3>{{noStatus}}</h3>
+    <div>Result Found: {{result}}</div>
+    <table class="table table-bordered table-striped">
+        <tr>
+          <th>Thesis Title</th>
+          <th>Proponents</th>
+          <th>Major</th>
+          <th>Status</th>
+          <th>Action Needed</th>
+        </tr>
+        {% for x in officeStatus %}
+          <tr>
+            <td>{{x.proponents.thesisTitle}}</td>
+            <td>{{x.proponents.proponents}}</td>
+            <td>{{x.proponents.studentId.major}}</td>
+            {% if user.userType == 'DIT' %}
+             {% if x.dit %}
+              <td>Submitted</td>
+              <td>None</td>
+             {% else %}
+              <td>Not Yet Submitted</td>
+              <td><a class= "btn btn-primary text-white" href="{% url 'update' x.pk %}">Update</a></td>
+             {% endif %}  
+            {% endif %}
+            {% if user.userType == 'OAA' %}
+             {% if x.oaa %}
+              <td>Submitted</td>
+              <td>None</td>
+             {% else %}
+              <td>Not Yet Submitted</td>
+              <td><a class= "btn btn-primary text-white" href="{% url 'update' x.pk %}">Update</a></td>
+             {% endif %}  
+            {% endif %}
+          </tr>
+        {% endfor %}
+    </table>
+
+  </div>
+  <div class="container">
+    <a class= "btn btn-danger" href="{% url 'index' %}">Logout</a>
+  </div>
+</body>
+{% endblock %}

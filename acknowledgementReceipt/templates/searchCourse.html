@@ -1,0 +1,38 @@
+{% extends 'activities/main.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+  <h1 class="text-center">Applicants Change Course/ Major</h1>
+  <div class="container">
+    <form method="POST" action = "">
+      {% csrf_token %}
+      <input class="form-control mb-4" name = "changeCM" type="number"
+        placeholder="Enter ERS Applicant No.">
+      <h3>{{result}} </h3>
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+    <a class= "btn btn-danger" href="{% url 'registration' %}">Cancel</a>
+    <table class="table table-bordered table-striped">
+      <tr>
+        <th>Application Number</th>
+        <th>Lastname</th>
+        <th>Firstname</th>
+        <th>Course</th>
+        <th>Major</th>
+      </tr>
+      {% for x in information %}
+        <tr>
+          <td>{{x.applicantNumber}}</td>
+          <td>{{x.lastName}}</td>
+          <td>{{x.firstName}}</td>
+          <td>{{x.course}}</td>
+          <td>{{x.major}}</td>
+        </tr>
+      {% endfor %}
+  </table>
+
+
+
+  </div>
+{% endblock %}
+

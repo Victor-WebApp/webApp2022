@@ -1,0 +1,25 @@
+{% extends 'activities/main.html' %}
+
+{% block content %}
+
+{% include 'activities/bg.html'%}
+  <h1 class="text-center">Welcome</h1>
+  <div class="container">
+    <form action="", method="POST">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+      </div>
+      <div class="form-group">
+        <label for="pwd">Password:</label>
+        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
+      </div>
+      <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+  </div>
+  <a href="{% url 'userRegistration' %}">Register</a>
+</div>
+{% endblock %}
+
+
+
